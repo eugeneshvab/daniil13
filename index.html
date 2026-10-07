@@ -192,7 +192,8 @@ textarea{min-height:84px;resize:vertical}
     if(f.elements.website.value){showThanks({name:name,coming:c.value});return}
     var yes=c.value==='yes',extra=yes?(parseInt(f.elements.extra.value,10)||0):0,note=f.elements.note.value.trim().slice(0,500);
     var p={k:SITE_KEY,v:1,id:rid(),ts:new Date().toISOString(),slug:'urodziny-daniil-13',subject:'Urodziny RSVP',topic:name.slice(0,80),mode:'other',
-      variant:yes?'TAK':'NIE',score:extra,extra:{kind:'rsvp',child:'RSVP',coming:yes?'TAK':'NIE',extra:extra,note:note,lang:L}};
+      variant:yes?'TAK':'NIE',score:extra,extra:{kind:'rsvp',child:'RSVP',coming:yes?'TAK':'NIE',extra:extra,note:note,lang:L},
+      name:name.slice(0,80),coming:c.value,extraPeople:extra,note:note,lang:L};
     var body=JSON.stringify(p);btn.disabled=true;
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body,redirect:'follow'})
       .then(function(r){return r.text()}).then(function(txt){
