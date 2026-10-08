@@ -6,9 +6,17 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#0b0b0c">
-<title>Daniil 13 · Padel · 17.10</title>
-<meta property="og:title" content="Daniil 13 · Padel · 17.10">
-<meta property="og:description" content="Sobota, 17 października, 13:00–16:00 · SanPadel, Mysiadło">
+<title>Danik wbija trzynastkę – zaproszenie</title>
+<meta name="description" content="Sobota, 17 października, 13:00 · SanPadel Mysiadło">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eugeneshvab.github.io/daniil13/">
+<meta property="og:title" content="Danik wbija trzynastkę – zaproszenie">
+<meta property="og:description" content="Sobota, 17 października, 13:00 · SanPadel Mysiadło">
+<meta property="og:image" content="https://eugeneshvab.github.io/daniil13/og.jpg?v=4">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23d7ff3a%22/></svg>">
 <style>
 :root{--bg:#0b0b0c;--panel:#151517;--line:#2a2a2e;--ink:#f3f3f1;--mute:#9a9aa1;--acc:#d7ff3a;--r:16px}
@@ -16,7 +24,7 @@
 html,body{margin:0;background:var(--bg);color:var(--ink)}
 body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
 .wrap{max-width:480px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 16px max(40px,env(safe-area-inset-bottom))}
-.video{position:relative;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:9/16;width:100%;max-width:calc(80svh * 9 / 16);margin:0 auto}
+.video{position:relative;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:9/16;width:100%;max-width:calc(68svh * 9 / 16);margin:0 auto}
 .video video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
 .play{position:absolute;inset:0 0 64px 0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;padding:0;cursor:pointer;color:#fff}
 .play span{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:14px 22px 14px 18px;font:600 16px/1 inherit;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
@@ -40,19 +48,55 @@ input:focus{outline:none;border-color:var(--acc)}
 .num button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;font:600 20px/1 inherit;cursor:pointer}
 .num input{text-align:center}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-.submit{width:100%;margin-top:24px;border:0;border-radius:12px;padding:15px;font:700 16px/1 inherit;color:#0b0b0c;background:var(--acc);cursor:pointer}
-.submit[disabled]{opacity:.55;cursor:wait}
-.err{color:#ff7a7a;font-size:14px;margin-top:10px;min-height:1em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.thanks{padding:22px 0}
-.thanks h3{font-size:22px;margin:0 0 6px}
-.thanks p{color:var(--mute);margin:0}
-.again{background:none;border:0;padding:0;margin-top:14px;color:var(--acc);font:600 14px/1 inherit;cursor:pointer}
 [hidden]{display:none!important}
+.hd{margin:2px 2px 14px}
+.over{margin:0 0 6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.hd h1{margin:0;font-size:clamp(26px,7.4vw,34px);line-height:1.08;letter-spacing:-.025em;font-weight:700}
+.hd h1 em{font-style:normal;color:var(--acc)}
+.hd .sub{margin:4px 0 0;color:var(--mute);font-size:16px}
+.submit{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:50px;margin:24px auto 0;border:0;border-radius:12px;padding:0 16px;font:700 16px/1 inherit;color:#0b0b0c;background:var(--acc);cursor:pointer;overflow:hidden;
+  transition:width .38s cubic-bezier(.4,0,.2,1),border-radius .38s cubic-bezier(.4,0,.2,1),transform .12s ease,opacity .2s}
+.submit:active{transform:scale(.98)}
+.submit[disabled]{cursor:default}
+.submit .spin{display:none;width:18px;height:18px;border-radius:50%;border:2px solid rgba(11,11,12,.25);border-top-color:#0b0b0c;animation:spin .7s linear infinite}
+.submit .chk{display:none;width:24px;height:24px;fill:none;stroke:#0b0b0c;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.submit .chk path{stroke-dasharray:24;stroke-dashoffset:24}
+.submit.is-loading .spin{display:block}
+.submit.is-done{width:50px;border-radius:999px;padding:0}
+.submit.is-done .t,.submit.is-done .spin{display:none}
+.submit.is-done .chk{display:block}
+.submit.is-done .chk path{animation:draw .34s .3s ease-out forwards}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.wait{color:var(--mute);font-size:13px;text-align:center;margin-top:10px;min-height:1em;opacity:0;transition:opacity .3s}
+.wait.on{opacity:1}
+.err{color:#ff8a8a;font-size:14px;margin-top:12px}
+.err:empty{display:none}
+.err button{display:inline;background:none;border:0;padding:0;margin-left:6px;color:var(--ink);font:600 14px/1.4 inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.shake{animation:shake .32s ease}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+#formbox{transition:height .45s cubic-bezier(.4,0,.2,1),opacity .3s ease}
+#formbox.collapsing{overflow:hidden;opacity:0}
+.thanks{padding:26px 0 8px;text-align:center}
+.thanks.in{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.thanks .mark{width:44px;height:44px;margin:0 auto 14px;border-radius:50%;border:1.5px solid var(--acc);display:flex;align-items:center;justify-content:center}
+.thanks .mark svg{width:20px;height:20px;fill:none;stroke:var(--acc);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.thanks h3{font-size:22px;letter-spacing:-.01em;margin:0 0 6px}
+.thanks p{color:var(--mute);margin:0;font-size:16px}
+.again{background:none;border:0;padding:0;margin-top:16px;color:var(--acc);font:600 14px/1 inherit;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .submit.is-loading .spin{animation:spin 1.6s linear infinite!important;animation-duration:1.6s!important;animation-iteration-count:infinite!important}}
 </style>
 </head>
 <body>
 <main class="wrap">
+  <header class="hd">
+    <p class="over">Zaproszenie · 13. urodziny</p>
+    <h1>Danik wbija <em>trzynastkę</em>.</h1>
+    <p class="sub">Zapraszamy na padla.</p>
+  </header>
   <div class="video">
     <video id="vid" src="invite.mp4?v=3" poster="poster.jpg?v=3" controls playsinline webkit-playsinline preload="metadata"></video>
     <button class="play" id="play" type="button" aria-label="Odtwórz wideo z dźwiękiem"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Odtwórz z dźwiękiem</span></button>
@@ -66,6 +110,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   </section>
 
   <section id="rsvp">
+    <div id="formbox">
     <form id="f" novalidate>
       <label for="name">Imię i nazwisko</label>
       <input type="text" id="name" name="name" maxlength="80" autocomplete="name" required>
@@ -83,9 +128,11 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
         </div>
       </div>
       <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
-      <button class="submit" id="send" type="submit">Wyślij</button>
-      <div class="err" id="err" role="alert"></div>
+      <button class="submit" id="send" type="submit"><span class="spin" aria-hidden="true"></span><span class="t">Wyślij</span><svg class="chk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+      <div class="wait" id="wait" aria-hidden="true">Jeszcze chwilka…</div>
+      <div class="err" id="err" role="alert" aria-live="assertive"></div>
     </form>
+    </div>
     <div id="thanks" class="thanks" hidden aria-live="polite"></div>
   </section>
 </main>
@@ -101,35 +148,63 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   pb.onclick=function(){v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){});};
   v.addEventListener('play',function(){pb.hidden=true});
 
+  // wake the Apps Script early (cold start can take ~10 s); GET only returns "ok"
+  var ENDPOINT_WARM=function(){try{fetch(ENDPOINT,{mode:'no-cors',cache:'no-store'}).catch(function(){})}catch(e){}};
+  if(document.readyState==='complete')setTimeout(ENDPOINT_WARM,800);else addEventListener('load',function(){setTimeout(ENDPOINT_WARM,800)});
+  var warmed=false;document.addEventListener('focusin',function(){if(!warmed){warmed=true;ENDPOINT_WARM()}});
+
   // form
-  var f=$('f'),err=$('err'),btn=$('send'),ppl=$('people'),box=$('peopleBox');
+  var f=$('f'),err=$('err'),btn=$('send'),bt=btn.querySelector('.t'),wait=$('wait'),ppl=$('people'),box=$('peopleBox'),fb=$('formbox'),thx=$('thanks');
+  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var busy=false,pending=null,waitT=null;
   function coming(){var c=f.querySelector('input[name=coming]:checked');return c?c.value:null}
   function clamp(n){n=parseInt(n,10);if(!isFinite(n))return 1;return Math.max(1,Math.min(20,n))}
-  f.addEventListener('change',function(){box.hidden=coming()!=='yes'});
-  $('minus').onclick=function(){ppl.value=clamp(ppl.value)-1||1};
+  f.addEventListener('change',function(){box.hidden=coming()!=='yes';err.textContent=''});
+  $('minus').onclick=function(){ppl.value=Math.max(1,clamp(ppl.value)-1)};
   $('plus').onclick=function(){ppl.value=Math.min(20,clamp(ppl.value)+1)};
-  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-  function showThanks(r){var y=r.coming==='yes',n=esc(r.name.split(/\s+/)[0]),t=$('thanks');
-    t.innerHTML=y?'<h3>Dzięki, '+n+'!</h3><p>Do zobaczenia 17 października o 13:00.</p>'
-                 :'<h3>Dzięki za odpowiedź, '+n+'.</h3><p>Szkoda, że nie dasz rady.</p>';
-    t.innerHTML+='<button class="again" type="button" id="again">Zmień odpowiedź</button>';
-    t.hidden=false;f.hidden=true;
-    $('again').onclick=function(){t.hidden=true;f.hidden=false};}
   function rid(){var a=new Uint8Array(10);crypto.getRandomValues(a);return 'rsvp'+Array.prototype.map.call(a,function(x){return x.toString(36)}).join('').slice(0,16)}
-  f.addEventListener('submit',function(e){e.preventDefault();err.textContent='';
+  function shake(el){if(RM)return;el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake')}
+  function invalid(msg,el){err.textContent=msg;shake(el);if(el.focus&&el.tagName==='INPUT')el.focus();}
+  function setLoading(on){busy=on;btn.disabled=on;btn.classList.toggle('is-loading',on);btn.setAttribute('aria-busy',on);bt.textContent=on?'Wysyłanie':'Wyślij';
+    clearTimeout(waitT);wait.classList.remove('on');if(on)waitT=setTimeout(function(){wait.classList.add('on')},2500);}
+  function fail(msg){setLoading(false);err.innerHTML='';err.appendChild(document.createTextNode(msg));
+    var r=document.createElement('button');r.type='button';r.textContent='Spróbuj ponownie';r.onclick=function(){send(pending)};err.appendChild(r);
+    err.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'});}
+  function success(r){clearTimeout(waitT);wait.classList.remove('on');btn.classList.remove('is-loading');btn.classList.add('is-done');bt.textContent='Wysłano';
+    var y=r.coming==='yes';
+    thx.innerHTML='<div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>'+
+      (y?'<h3>Dziękujemy!</h3><p>Do zobaczenia 17 października.</p>':'<h3>Szkoda!</h3><p>Dziękujemy za odpowiedź.</p>')+
+      '<button class="again" type="button" id="again">Zmień odpowiedź</button>';
+    setTimeout(function(){
+      fb.style.height=fb.scrollHeight+'px';void fb.offsetHeight;fb.classList.add('collapsing');fb.style.height='0px';
+      setTimeout(function(){fb.hidden=true;fb.classList.remove('collapsing');fb.style.height='';
+        thx.hidden=false;thx.classList.remove('in');void thx.offsetWidth;thx.classList.add('in');
+        thx.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'});
+        $('again').onclick=reopen;},RM?0:460);
+    },RM?150:900);}
+  function reopen(){thx.hidden=true;fb.hidden=false;btn.classList.remove('is-done');setLoading(false);pending=null;f.elements.name.focus();}
+  function send(job){if(!job)return;err.textContent='';setLoading(true);
+    var ctl=window.AbortController?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},25000);
+    var opt={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:job.body,redirect:'follow',cache:'no-store'};if(ctl)opt.signal=ctl.signal;
+    fetch(ENDPOINT,opt).then(function(r){return r.text()}).then(function(txt){clearTimeout(to);txt=String(txt).trim();
+        if(txt==='ok'||txt==='dup')success(job);else if(txt==='rate')fail('Za dużo prób naraz. Spróbuj za minutę.');else fail('Coś poszło nie tak.');})
+      .catch(function(e){clearTimeout(to);
+        if(e&&e.name==='AbortError'){fail('Serwer nie odpowiada.');return}
+        // CORS hiccup: resend without reading the reply (same id, so the sheet will not get a duplicate)
+        fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:job.body}).then(function(){success(job)})
+          .catch(function(){fail('Brak połączenia.')});});}
+  f.addEventListener('submit',function(e){e.preventDefault();if(busy)return;err.textContent='';
     var name=f.elements.name.value.trim(),c=coming();
-    if(!name){err.textContent='Wpisz imię i nazwisko.';f.elements.name.focus();return}
-    if(!c){err.textContent='Zaznacz „Tak” albo „Nie”.';return}
+    if(!name){invalid('Wpisz imię i nazwisko.',f.elements.name);return}
+    if(!c){invalid('Zaznacz „Tak” albo „Nie”.',f.querySelector('.seg'));return}
     var yes=c==='yes',people=yes?clamp(ppl.value):0;
-    if(f.elements.website.value){showThanks({name:name,coming:c});return}
+    if(f.elements.website.value){success({name:name,coming:c});return}
     var p={k:SITE_KEY,v:1,id:rid(),ts:new Date().toISOString(),slug:'urodziny-daniil-13',subject:'Urodziny RSVP',topic:name.slice(0,80),mode:'other',
       variant:yes?'TAK':'NIE',score:people,extra:{kind:'rsvp',child:'RSVP',coming:yes?'TAK':'NIE',people:people,lang:'pl'},
       name:name.slice(0,80),coming:c,people:people,lang:'pl'};
-    var body=JSON.stringify(p);btn.disabled=true;
-    function done(){btn.disabled=false;var r={name:name,coming:c};f.reset();ppl.value=1;box.hidden=true;showThanks(r);}
-    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body,redirect:'follow'})
-      .then(function(r){return r.text()}).then(function(txt){if(/^(ok|dup)$/.test(txt.trim())) done(); else {err.textContent='Coś poszło nie tak. Spróbuj za chwilę.';btn.disabled=false;}})
-      .catch(function(){fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body}).then(done).catch(function(){err.textContent='Brak połączenia. Spróbuj jeszcze raz.';btn.disabled=false;});});
+    pending={name:name,coming:c,body:JSON.stringify(p)};
+    if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+    send(pending);
   });
 })();
 </script>
