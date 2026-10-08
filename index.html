@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl" data-lang="pl">
+<html lang="pl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -8,47 +8,39 @@
 <meta name="theme-color" content="#0b0b0c">
 <title>Daniil 13 · Padel · 17.10</title>
 <meta property="og:title" content="Daniil 13 · Padel · 17.10">
-<meta property="og:description" content="Sobota 17 października, 13:00–16:00 · SanPadel, Mysiadło">
+<meta property="og:description" content="Sobota, 17 października, 13:00–16:00 · SanPadel, Mysiadło">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23d7ff3a%22/></svg>">
 <style>
-:root{--bg:#0b0b0c;--panel:#141416;--line:#26262a;--ink:#f3f3f1;--mute:#9a9aa1;--acc:#d7ff3a;--r:16px}
+:root{--bg:#0b0b0c;--panel:#151517;--line:#2a2a2e;--ink:#f3f3f1;--mute:#9a9aa1;--acc:#d7ff3a;--r:16px}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink)}
-body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
-html[data-lang=pl] [lang=en]{display:none!important}
-html[data-lang=en] [lang=pl]{display:none!important}
-.wrap{max-width:520px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 18px 48px}
-.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
-.lang{background:none;border:1px solid var(--line);color:var(--mute);border-radius:999px;padding:6px 12px;font:600 12px/1 inherit;letter-spacing:.08em;cursor:pointer}
-.lang b{font-weight:600}.lang b.on{color:var(--ink)}
-.video{position:relative;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:9/16;max-height:72vh;margin:0 auto;width:100%}
-.video video{width:100%;height:100%;object-fit:cover;display:block}
-.sound{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 14px;font:600 13px/1 inherit;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.sound svg{width:16px;height:16px}
-h1{font-size:clamp(34px,9vw,44px);line-height:1.05;letter-spacing:-.025em;margin:26px 0 6px;font-weight:700}
-h1 span{color:var(--acc)}
-.lead{color:var(--mute);margin:0 0 22px;font-size:17px}
-.rows{border-top:1px solid var(--line)}
-.row{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
-.row dt{color:var(--mute);font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
-.row dd{margin:0;font-size:16px}
-.row a{color:var(--acc);text-decoration:none;font-weight:600;display:inline-block;margin-top:4px}
-.row small{color:var(--mute);font-size:14px;display:block;margin-top:2px}
-h2{font-size:22px;letter-spacing:-.01em;margin:34px 0 4px;font-weight:700}
-.note{color:var(--mute);margin:0 0 8px;font-size:15px}
-label{display:block;font-size:13px;color:var(--mute);margin:16px 0 6px;letter-spacing:.02em}
-.opt{opacity:.7}
-input[type=text],textarea,select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px;appearance:none;-webkit-appearance:none}
-select{background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 15px) 55%;background-size:5px 5px;background-repeat:no-repeat}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
-textarea{min-height:84px;resize:vertical}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 16px max(40px,env(safe-area-inset-bottom))}
+.video{position:relative;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:9/16;width:100%;max-width:calc(80svh * 9 / 16);margin:0 auto}
+.video video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.play{position:absolute;inset:0 0 64px 0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;padding:0;cursor:pointer;color:#fff}
+.play span{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:14px 22px 14px 18px;font:600 16px/1 inherit;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.play svg{width:22px;height:22px}
+.play[hidden]{display:none}
+.info{margin:22px 0 6px;padding:2px 0 18px;border-bottom:1px solid var(--line)}
+.when{margin:0 0 10px;font-size:18px;font-weight:600;letter-spacing:-.005em}
+.where{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.where b{display:block;font-size:16px;font-weight:600}
+.where small{display:block;color:var(--mute);font-size:15px}
+.where i{font-style:normal;color:var(--acc);font-weight:600;font-size:14px;white-space:nowrap}
+label,.lbl{display:block;font-size:13px;color:var(--mute);margin:18px 0 7px;letter-spacing:.02em}
+input[type=text],input[type=number]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px;appearance:none;-webkit-appearance:none;-moz-appearance:textfield}
+input:focus{outline:none;border-color:var(--acc)}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .seg input{position:absolute;opacity:0;pointer-events:none}
-.seg label{margin:0;text-align:center;padding:13px 10px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);font-size:15px;cursor:pointer}
+.seg label{margin:0;text-align:center;padding:13px 10px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);font-size:16px;cursor:pointer}
 .seg input:checked+label{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
 .seg input:focus-visible+label{outline:2px solid var(--acc);outline-offset:2px}
-.submit{width:100%;margin-top:22px;border:0;border-radius:12px;padding:15px;font:700 16px/1 inherit;color:#0b0b0c;background:var(--acc);cursor:pointer}
+.num{display:grid;grid-template-columns:52px 1fr 52px;gap:8px}
+.num button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;font:600 20px/1 inherit;cursor:pointer}
+.num input{text-align:center}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.submit{width:100%;margin-top:24px;border:0;border-radius:12px;padding:15px;font:700 16px/1 inherit;color:#0b0b0c;background:var(--acc);cursor:pointer}
 .submit[disabled]{opacity:.55;cursor:wait}
 .err{color:#ff7a7a;font-size:14px;margin-top:10px;min-height:1em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
@@ -56,111 +48,89 @@ textarea{min-height:84px;resize:vertical}
 .thanks h3{font-size:22px;margin:0 0 6px}
 .thanks p{color:var(--mute);margin:0}
 .again{background:none;border:0;padding:0;margin-top:14px;color:var(--acc);font:600 14px/1 inherit;cursor:pointer}
-.foot{color:var(--mute);font-size:12px;margin-top:30px;text-align:center}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="bar"><span class="tag">17.10 · SanPadel</span><button class="lang" id="lang" type="button" aria-label="Język / Language"><b data-l="pl" class="on">PL</b> / <b data-l="en">EN</b></button></div>
-
+<main class="wrap">
   <div class="video">
-    <video id="vid" src="invite.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
-    <button class="sound" id="sound" type="button" aria-pressed="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path id="wave" d="M16 9a5 5 0 0 1 0 6M19 6a9 9 0 0 1 0 12" style="display:none"/><path id="x" d="m16 9 5 6m0-6-5 6"/></svg>
-      <span id="soundTxt"><span lang="pl">Włącz dźwięk</span><span lang="en">Sound on</span></span>
-    </button>
+    <video id="vid" src="invite.mp4?v=3" poster="poster.jpg?v=3" controls playsinline webkit-playsinline preload="metadata"></video>
+    <button class="play" id="play" type="button" aria-label="Odtwórz wideo z dźwiękiem"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Odtwórz z dźwiękiem</span></button>
   </div>
 
-  <h1><span lang="pl">Daniil kończy <span>13</span></span><span lang="en">Daniil turns <span>13</span></span></h1>
-  <p class="lead" lang="pl">Zapraszamy na urodziny na padlu.</p>
-  <p class="lead" lang="en">You're invited to a padel birthday.</p>
-
-  <dl class="rows">
-    <div class="row"><dt lang="pl">Kiedy</dt><dt lang="en">When</dt>
-      <dd><span lang="pl">Sobota, 17 października 2026</span><span lang="en">Saturday, 17 October 2026</span><small>13:00–16:00</small></dd></div>
-    <div class="row"><dt lang="pl">Gdzie</dt><dt lang="en">Where</dt>
-      <dd>SanPadel<small>ul. Przedsiębiorców 1, 05-500 Mysiadło</small>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=SanPadel%2C%20ul.%20Przedsi%C4%99biorc%C3%B3w%201%2C%2005-500%20Mysiad%C5%82o" target="_blank" rel="noopener noreferrer"><span lang="pl">Mapa →</span><span lang="en">Map →</span></a></dd></div>
-    <div class="row"><dt lang="pl">Zabierz</dt><dt lang="en">Bring</dt>
-      <dd><span lang="pl">Strój sportowy i buty na kort.</span><span lang="en">Sports clothes and court shoes.</span>
-        <small lang="pl">Rakiety, pizzę i napoje zapewniamy.</small><small lang="en">Rackets, pizza and drinks are on us.</small></dd></div>
-  </dl>
-
-  <section id="rsvp">
-    <div id="formbox">
-      <h2 lang="pl">Potwierdź obecność</h2><h2 lang="en">RSVP</h2>
-      <p class="note" lang="pl">Prosimy o odpowiedź do wtorku, 13 października.</p>
-      <p class="note" lang="en">Please reply by Tuesday, 13 October.</p>
-      <form id="f" novalidate>
-        <label for="name"><span lang="pl">Imię i nazwisko</span><span lang="en">Name</span></label>
-        <input type="text" id="name" name="name" maxlength="80" autocomplete="name" required>
-        <label><span lang="pl">Będziesz?</span><span lang="en">Coming?</span></label>
-        <div class="seg" role="radiogroup">
-          <input type="radio" name="coming" id="c-yes" value="yes" required><label for="c-yes"><span lang="pl">Tak</span><span lang="en">Yes</span></label>
-          <input type="radio" name="coming" id="c-no" value="no"><label for="c-no"><span lang="pl">Nie</span><span lang="en">No</span></label>
-        </div>
-        <div id="extraBox">
-          <label for="extra"><span lang="pl">Dodatkowe osoby</span><span lang="en">Extra people</span> <span class="opt"><span lang="pl">(np. rodzic, który zostaje)</span><span lang="en">(e.g. a parent staying)</span></span></label>
-          <select id="extra" name="extra"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
-        </div>
-        <label for="note"><span lang="pl">Uwagi / alergie</span><span lang="en">Notes / allergies</span> <span class="opt"><span lang="pl">(opcjonalnie)</span><span lang="en">(optional)</span></span></label>
-        <textarea id="note" name="note" maxlength="500"></textarea>
-        <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
-        <button class="submit" id="send" type="submit"><span lang="pl">Wyślij</span><span lang="en">Send</span></button>
-        <div class="err" id="err" role="alert"></div>
-      </form>
-    </div>
-    <div id="thanks" class="thanks" hidden aria-live="polite"></div>
+  <section class="info">
+    <p class="when">Sobota, 17 października, 13:00–16:00</p>
+    <a class="where" href="https://www.google.com/maps/search/?api=1&amp;query=SanPadel%2C%20ul.%20Przedsi%C4%99biorc%C3%B3w%201%2C%2005-500%20Mysiad%C5%82o" target="_blank" rel="noopener noreferrer">
+      <span><b>SanPadel</b><small>ul. Przedsiębiorców 1, 05-500 Mysiadło</small></span><i>Mapa →</i>
+    </a>
   </section>
 
-  <p class="foot"><span lang="pl">Odpowiedzi widzą tylko rodzice Daniila.</span><span lang="en">Only Daniil's parents see the replies.</span></p>
-</div>
+  <section id="rsvp">
+    <form id="f" novalidate>
+      <label for="name">Imię i nazwisko</label>
+      <input type="text" id="name" name="name" maxlength="80" autocomplete="name" required>
+      <span class="lbl" id="comingLbl">Będziesz?</span>
+      <div class="seg" role="radiogroup" aria-labelledby="comingLbl">
+        <input type="radio" name="coming" id="c-yes" value="yes"><label for="c-yes">Tak</label>
+        <input type="radio" name="coming" id="c-no" value="no"><label for="c-no">Nie</label>
+      </div>
+      <div id="peopleBox" hidden>
+        <label for="people">Liczba osób</label>
+        <div class="num">
+          <button type="button" id="minus" aria-label="Mniej">−</button>
+          <input type="number" id="people" name="people" min="1" max="20" step="1" value="1" inputmode="numeric">
+          <button type="button" id="plus" aria-label="Więcej">+</button>
+        </div>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <button class="submit" id="send" type="submit">Wyślij</button>
+      <div class="err" id="err" role="alert"></div>
+    </form>
+    <div id="thanks" class="thanks" hidden aria-live="polite"></div>
+  </section>
+</main>
 
 <script>
 (function(){
   var ENDPOINT='https://script.google.com/macros/s/AKfycbxekC8Gj0AUYWyh1JTaj5tyMg1aQoHm_O82LQ1pndiIMhKAl2_I5AwQWb-RAb6CVKZIQg/exec';
   var SITE_KEY='tp-REQPKbguGjfRDkrw'; // anti-spam filter, not a secret
-  var html=document.documentElement, L='pl', last=null;
-  var T={
-    pl:{name:'Wpisz imię i nazwisko.',coming:'Zaznacz „Tak” albo „Nie”.',net:'Brak połączenia. Spróbuj jeszcze raz.',bad:'Coś poszło nie tak. Spróbuj za chwilę.',
-      yesT:'Dzięki, {n}!',yesP:'Do zobaczenia w sobotę, 17 października, o 13:00.',noT:'Dzięki za odpowiedź, {n}.',noP:'Szkoda, że nie dasz rady. Może następnym razem.',again:'Zmień odpowiedź',on:'Wycisz',off:'Włącz dźwięk'},
-    en:{name:'Please enter your name.',coming:'Please choose “Yes” or “No”.',net:'No connection. Please try again.',bad:'Something went wrong. Please try again shortly.',
-      yesT:'Thanks, {n}!',yesP:'See you on Saturday, 17 October, at 13:00.',noT:'Thanks for letting us know, {n}.',noP:'Sorry you can\u2019t make it. Maybe next time.',again:'Change my answer',on:'Mute',off:'Sound on'}
-  };
-  // video sound toggle
-  var v=document.getElementById('vid'),sb=document.getElementById('sound');
-  function paintSound(){var on=!v.muted;sb.setAttribute('aria-pressed',on);document.getElementById('wave').style.display=on?'':'none';document.getElementById('x').style.display=on?'none':'';
-    document.getElementById('soundTxt').textContent=on?T[L].on:T[L].off;}
-  sb.onclick=function(){if(v.muted){v.muted=false;try{v.currentTime=0}catch(e){} v.play();}else{v.muted=true;} paintSound();};
-  function setLang(l){L=l;html.setAttribute('data-lang',l);html.lang=l;
-    document.querySelectorAll('#lang b').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l)});
-    try{localStorage.setItem('d13:lang',l)}catch(e){} paintSound(); if(last) showThanks(last);}
-  document.getElementById('lang').onclick=function(){setLang(L==='pl'?'en':'pl')};
-  var f=document.getElementById('f'),err=document.getElementById('err'),btn=document.getElementById('send');
-  f.addEventListener('change',function(){var c=f.querySelector('input[name=coming]:checked');document.getElementById('extraBox').style.display=(c&&c.value==='no')?'none':''});
+  var $=function(id){return document.getElementById(id)};
+
+  // video: tap to play with sound
+  var v=$('vid'),pb=$('play');
+  pb.onclick=function(){v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){});};
+  v.addEventListener('play',function(){pb.hidden=true});
+
+  // form
+  var f=$('f'),err=$('err'),btn=$('send'),ppl=$('people'),box=$('peopleBox');
+  function coming(){var c=f.querySelector('input[name=coming]:checked');return c?c.value:null}
+  function clamp(n){n=parseInt(n,10);if(!isFinite(n))return 1;return Math.max(1,Math.min(20,n))}
+  f.addEventListener('change',function(){box.hidden=coming()!=='yes'});
+  $('minus').onclick=function(){ppl.value=clamp(ppl.value)-1||1};
+  $('plus').onclick=function(){ppl.value=Math.min(20,clamp(ppl.value)+1)};
   function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-  function showThanks(r){var t=T[L],y=r.coming==='yes',first=esc(r.name.split(/\s+/)[0]),box=document.getElementById('thanks');
-    box.innerHTML='<h3>'+(y?t.yesT:t.noT).replace('{n}',first)+'</h3><p>'+(y?t.yesP:t.noP)+'</p><button class="again" type="button" id="again">'+t.again+'</button>';
-    box.hidden=false;document.getElementById('formbox').hidden=true;
-    document.getElementById('again').onclick=function(){box.hidden=true;document.getElementById('formbox').hidden=false;last=null};}
+  function showThanks(r){var y=r.coming==='yes',n=esc(r.name.split(/\s+/)[0]),t=$('thanks');
+    t.innerHTML=y?'<h3>Dzięki, '+n+'!</h3><p>Do zobaczenia 17 października o 13:00.</p>'
+                 :'<h3>Dzięki za odpowiedź, '+n+'.</h3><p>Szkoda, że nie dasz rady.</p>';
+    t.innerHTML+='<button class="again" type="button" id="again">Zmień odpowiedź</button>';
+    t.hidden=false;f.hidden=true;
+    $('again').onclick=function(){t.hidden=true;f.hidden=false};}
   function rid(){var a=new Uint8Array(10);crypto.getRandomValues(a);return 'rsvp'+Array.prototype.map.call(a,function(x){return x.toString(36)}).join('').slice(0,16)}
   f.addEventListener('submit',function(e){e.preventDefault();err.textContent='';
-    var name=f.elements.name.value.trim(),c=f.querySelector('input[name=coming]:checked'),t=T[L];
-    if(!name){err.textContent=t.name;f.elements.name.focus();return}
-    if(!c){err.textContent=t.coming;return}
-    if(f.elements.website.value){showThanks({name:name,coming:c.value});return}
-    var yes=c.value==='yes',extra=yes?(parseInt(f.elements.extra.value,10)||0):0,note=f.elements.note.value.trim().slice(0,500);
+    var name=f.elements.name.value.trim(),c=coming();
+    if(!name){err.textContent='Wpisz imię i nazwisko.';f.elements.name.focus();return}
+    if(!c){err.textContent='Zaznacz „Tak” albo „Nie”.';return}
+    var yes=c==='yes',people=yes?clamp(ppl.value):0;
+    if(f.elements.website.value){showThanks({name:name,coming:c});return}
     var p={k:SITE_KEY,v:1,id:rid(),ts:new Date().toISOString(),slug:'urodziny-daniil-13',subject:'Urodziny RSVP',topic:name.slice(0,80),mode:'other',
-      variant:yes?'TAK':'NIE',score:extra,extra:{kind:'rsvp',child:'RSVP',coming:yes?'TAK':'NIE',extra:extra,note:note,lang:L},
-      name:name.slice(0,80),coming:c.value,extraPeople:extra,note:note,lang:L};
+      variant:yes?'TAK':'NIE',score:people,extra:{kind:'rsvp',child:'RSVP',coming:yes?'TAK':'NIE',people:people,lang:'pl'},
+      name:name.slice(0,80),coming:c,people:people,lang:'pl'};
     var body=JSON.stringify(p);btn.disabled=true;
-    function done(){btn.disabled=false;last={name:name,coming:c.value};f.reset();document.getElementById('extraBox').style.display='';showThanks(last);}
+    function done(){btn.disabled=false;var r={name:name,coming:c};f.reset();ppl.value=1;box.hidden=true;showThanks(r);}
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body,redirect:'follow'})
-      .then(function(r){return r.text()}).then(function(txt){if(/^(ok|dup)$/.test(txt.trim())) done(); else {err.textContent=t.bad;btn.disabled=false;}})
-      .catch(function(){fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body}).then(done).catch(function(){err.textContent=t.net;btn.disabled=false;});});
+      .then(function(r){return r.text()}).then(function(txt){if(/^(ok|dup)$/.test(txt.trim())) done(); else {err.textContent='Coś poszło nie tak. Spróbuj za chwilę.';btn.disabled=false;}})
+      .catch(function(){fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body}).then(done).catch(function(){err.textContent='Brak połączenia. Spróbuj jeszcze raz.';btn.disabled=false;});});
   });
-  var saved=null;try{saved=localStorage.getItem('d13:lang')}catch(e){}
-  setLang(saved==='en'?'en':'pl');
 })();
 </script>
 </body>
