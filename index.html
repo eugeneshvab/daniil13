@@ -200,16 +200,20 @@ input:focus{outline:none;border-color:var(--acc)}
         $('again').onclick=reopen;},RM?0:460);
     },RM?150:900);}
   function reopen(){thx.hidden=true;fb.hidden=false;btn.classList.remove('is-done');setLoading(false);pending=null;f.elements.name.focus();}
-  function send(job){if(!job)return;err.textContent='';setLoading(true);
-    var ctl=window.AbortController?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},25000);
+  // one request per attempt; a slow or unreadable attempt is retried once silently with the same id (the script dedupes by id)
+  function post(job,ms,cb){var done=false,ctl=window.AbortController?new AbortController():null;
+    var to=setTimeout(function(){fin('timeout');if(ctl)ctl.abort()},ms);
+    function fin(r){if(done)return;done=true;clearTimeout(to);cb(r)}
     var opt={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:job.body,redirect:'follow',cache:'no-store'};if(ctl)opt.signal=ctl.signal;
-    fetch(ENDPOINT,opt).then(function(r){return r.text()}).then(function(txt){clearTimeout(to);txt=String(txt).trim();
-        if(txt==='ok'||txt==='dup')success(job);else if(txt==='rate')fail('Za dużo prób naraz. Spróbuj za minutę.');else fail('Coś poszło nie tak.');})
-      .catch(function(e){clearTimeout(to);
-        if(e&&e.name==='AbortError'){fail('Serwer nie odpowiada.');return}
-        // CORS hiccup: resend without reading the reply (same id, so the sheet will not get a duplicate)
-        fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:job.body}).then(function(){success(job)})
-          .catch(function(){fail('Brak połączenia.')});});}
+    fetch(ENDPOINT,opt).then(function(r){return r.text()}).then(function(t){t=String(t).trim();fin(t==='ok'||t==='dup'?'ok':(t==='rate'?'rate':'bad'))})
+      .catch(function(e){if(done)return;
+        // CORS hiccup: resend without reading the reply (same id, so no duplicate row)
+        fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:job.body}).then(function(){fin('ok')}).catch(function(){fin('net')});});}
+  function send(job){if(!job)return;err.textContent='';setLoading(true);var ended=false;
+    function end(r){if(ended)return;ended=true;
+      if(r==='ok')success(job);else if(r==='rate')fail('Za dużo prób naraz. Spróbuj za minutę.');else if(r==='net')fail('Brak połączenia.');else if(r==='timeout')fail('Serwer nie odpowiada.');else fail('Coś poszło nie tak.');}
+    post(job,15000,function(r){if(r==='ok'||r==='rate')return end(r);
+      post(job,20000,end);});}
   f.addEventListener('submit',function(e){e.preventDefault();if(busy)return;err.textContent='';
     var name=f.elements.name.value.trim(),c=coming();
     if(!name){invalid('Wpisz imię i nazwisko.',f.elements.name);return}
