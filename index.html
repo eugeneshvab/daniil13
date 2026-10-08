@@ -7,11 +7,11 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#0b0b0c">
 <title>Danik wbija trzynastkę – zaproszenie</title>
-<meta name="description" content="Sobota, 17 października, 13:00 · SanPadel Mysiadło">
+<meta name="description" content="Sobota, 17 października · zbiórka 12:20–12:30 · SanPadel Mysiadło">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://eugeneshvab.github.io/daniil13/">
 <meta property="og:title" content="Danik wbija trzynastkę – zaproszenie">
-<meta property="og:description" content="Sobota, 17 października, 13:00 · SanPadel Mysiadło">
+<meta property="og:description" content="Sobota, 17 października · zbiórka 12:20–12:30 · SanPadel Mysiadło">
 <meta property="og:image" content="https://eugeneshvab.github.io/daniil13/og.jpg?v=4">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,6 +32,9 @@ body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvet
 .play[hidden]{display:none}
 .info{margin:22px 0 6px;padding:2px 0 18px;border-bottom:1px solid var(--line)}
 .when{margin:0 0 10px;font-size:18px;font-weight:600;letter-spacing:-.005em}
+.arrive{margin:0 0 16px;padding:13px 15px;border:1px solid var(--acc);border-radius:12px;background:rgba(215,255,58,.08)}
+.arrive b{display:block;color:var(--acc);font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+.arrive span{display:block;color:var(--ink);opacity:.82;font-size:15px;margin-top:3px}
 .where{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
 .where b{display:block;font-size:16px;font-weight:600}
 .where small{display:block;color:var(--mute);font-size:15px}
@@ -104,6 +107,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 
   <section class="info">
     <p class="when">Sobota, 17 października, 13:00–16:00</p>
+    <p class="arrive"><b>Przyjdźcie o 12:20–12:30</b><span>żeby spokojnie się przebrać. Gramy od 13:00.</span></p>
     <a class="where" href="https://www.google.com/maps/search/?api=1&amp;query=SanPadel%2C%20ul.%20Przedsi%C4%99biorc%C3%B3w%201%2C%2005-500%20Mysiad%C5%82o" target="_blank" rel="noopener noreferrer">
       <span><b>SanPadel</b><small>ul. Przedsiębiorców 1, 05-500 Mysiadło</small></span><i>Mapa →</i>
     </a>
@@ -173,7 +177,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   function success(r){clearTimeout(waitT);wait.classList.remove('on');btn.classList.remove('is-loading');btn.classList.add('is-done');bt.textContent='Wysłano';
     var y=r.coming==='yes';
     thx.innerHTML='<div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>'+
-      (y?'<h3>Dziękujemy!</h3><p>Do zobaczenia 17 października.</p>':'<h3>Szkoda!</h3><p>Dziękujemy za odpowiedź.</p>')+
+      (y?'<h3>Dziękujemy!</h3><p>Do zobaczenia 17 października o 12:20.</p>':'<h3>Szkoda!</h3><p>Dziękujemy za odpowiedź.</p>')+
       '<button class="again" type="button" id="again">Zmień odpowiedź</button>';
     setTimeout(function(){
       fb.style.height=fb.scrollHeight+'px';void fb.offsetHeight;fb.classList.add('collapsing');fb.style.height='0px';
