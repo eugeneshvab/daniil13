@@ -21,7 +21,7 @@
 <style>
 :root{--bg:#0b0b0c;--panel:#151517;--line:#2a2a2e;--ink:#f3f3f1;--mute:#9a9aa1;--acc:#d7ff3a;--r:16px}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink)}
+html,body{margin:0;background:var(--bg);color:var(--ink);overflow-x:clip}
 body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
 .wrap{max-width:480px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 16px max(40px,env(safe-area-inset-bottom))}
 .video{position:relative;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:9/16;width:100%;max-width:calc(68svh * 9 / 16);margin:0 auto}
@@ -53,6 +53,17 @@ input:focus{outline:none;border-color:var(--acc)}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 [hidden]{display:none!important}
+.fig{display:block;width:auto;max-width:none;user-select:none;-webkit-user-select:none;pointer-events:none}
+.hd{position:relative;min-height:150px;padding-right:118px;display:flex;flex-direction:column;justify-content:flex-end;margin:0 0 14px}
+.hd .txt{padding-bottom:6px}
+.hd .fig{position:absolute;right:-16px;bottom:-14px;-webkit-mask-image:linear-gradient(to top,transparent,#000 18%);mask-image:linear-gradient(to top,transparent,#000 18%)}
+.peek{display:flex;align-items:center;gap:12px;margin:22px 0 -6px -16px}
+.peek .fig{-webkit-mask-image:linear-gradient(to right,transparent,#000 10%);mask-image:linear-gradient(to right,transparent,#000 10%)}
+.peek p{margin:0;font-size:22px;font-weight:700;letter-spacing:-.015em;line-height:1.15}
+.peek p span{display:block;color:var(--mute);font-size:15px;font-weight:500;letter-spacing:0;margin-top:6px}
+.outro{display:flex;justify-content:flex-end;align-items:flex-end;gap:18px;margin:8px -16px 0 0;border-bottom:1px solid var(--line)}
+.outro .fig{margin-bottom:-2px}
+.outro .fig:last-child{-webkit-mask-image:linear-gradient(to left,transparent,#000 10%);mask-image:linear-gradient(to left,transparent,#000 10%)}
 .hd{margin:2px 2px 14px}
 .over{margin:0 0 6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
 .hd h1{margin:0;font-size:clamp(26px,7.4vw,34px);line-height:1.08;letter-spacing:-.025em;font-weight:700}
@@ -96,9 +107,12 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 <body>
 <main class="wrap">
   <header class="hd">
-    <p class="over">Zaproszenie · 13. urodziny</p>
-    <h1>Danik wbija <em>trzynastkę</em>.</h1>
-    <p class="sub">Zapraszamy na padla.</p>
+    <div class="txt">
+      <p class="over">Zaproszenie · 13. urodziny</p>
+      <h1>Danik wbija <em>trzynastkę</em>.</h1>
+      <p class="sub">Zapraszamy na padla.</p>
+    </div>
+    <img class="fig" src="chars/eugene-point.webp" width="161" height="440" style="height:164px" alt="" decoding="async" fetchpriority="low">
   </header>
   <div class="video">
     <video id="vid" src="invite.mp4?v=3" poster="poster.jpg?v=3" playsinline webkit-playsinline preload="metadata"></video>
@@ -112,6 +126,11 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
       <span><b>SanPadel</b><small>ul. Przedsiębiorców 1, 05-500 Mysiadło</small></span><i>Mapa →</i>
     </a>
   </section>
+
+  <div class="peek">
+    <img class="fig" src="chars/daniil-point.webp" width="147" height="400" style="height:150px" alt="" decoding="async" loading="lazy">
+    <p>Potwierdź<br>obecność.</p>
+  </div>
 
   <section id="rsvp">
     <div id="formbox">
@@ -139,6 +158,10 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     </div>
     <div id="thanks" class="thanks" hidden aria-live="polite"></div>
   </section>
+  <div class="outro" aria-hidden="true">
+    <img class="fig" src="chars/daniil-racket.webp" width="142" height="380" style="height:132px" alt="" decoding="async" loading="lazy">
+    <img class="fig" src="chars/eugene-walk.webp" width="154" height="380" style="height:140px" alt="" decoding="async" loading="lazy">
+  </div>
 </main>
 
 <script>
