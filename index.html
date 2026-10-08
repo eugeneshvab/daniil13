@@ -91,13 +91,26 @@ input:focus{outline:none;border-color:var(--acc)}
 @keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 #formbox{transition:height .45s cubic-bezier(.4,0,.2,1),opacity .3s ease}
 #formbox.collapsing{overflow:hidden;opacity:0}
-.thanks{padding:26px 0 8px;text-align:center}
+.vs{transition:opacity .3s ease}
+.vs.fading{opacity:0}
+.thanks{padding:22px 0 8px;text-align:center}
 .thanks.in{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .thanks .mark{width:44px;height:44px;margin:0 auto 14px;border-radius:50%;border:1.5px solid var(--acc);display:flex;align-items:center;justify-content:center}
 .thanks .mark svg{width:20px;height:20px;fill:none;stroke:var(--acc);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.thanks h3{font-size:22px;letter-spacing:-.01em;margin:0 0 6px}
-.thanks p{color:var(--mute);margin:0;font-size:16px}
+.thanks h3{font-size:30px;line-height:1.1;letter-spacing:-.025em;margin:0 0 8px;font-weight:700}
+.cg-stage{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:2px;margin:0 0 22px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.cg-stage::before{content:"";position:absolute;left:50%;bottom:-24px;width:320px;height:70px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(215,255,58,.14),transparent);pointer-events:none}
+.cg-stage img{position:relative;display:block;width:auto;max-width:none;opacity:0;transform:translateY(18px)}
+.cg-stage .kneel{margin-right:-34px;z-index:0;-webkit-mask-image:linear-gradient(to left,transparent,#000 9%);mask-image:linear-gradient(to left,transparent,#000 9%)}
+.cg-stage .kneel+img{z-index:1}
+.cg-t{opacity:0;transform:translateY(8px)}
+.thanks.in .cg-stage img{animation:cgin .65s cubic-bezier(.2,.7,.2,1) forwards}
+.thanks.in .cg-stage img+img{animation-delay:.15s}
+.thanks.in .cg-t{animation:cgin .5s .35s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes cgin{to{opacity:1;transform:none}}
+.thanks.no h3{font-size:26px}
+.thanks p{color:var(--mute);margin:0;font-size:17px}
 .again{background:none;border:0;padding:0;margin-top:16px;color:var(--acc);font:600 14px/1 inherit;cursor:pointer}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .submit.is-loading .spin{animation:spin 1.6s linear infinite!important;animation-duration:1.6s!important;animation-iteration-count:infinite!important}}
@@ -171,10 +184,12 @@ input:focus{outline:none;border-color:var(--acc)}
   // wake the Apps Script early (cold start can take ~10 s); GET only returns "ok"
   var ENDPOINT_WARM=function(){try{fetch(ENDPOINT,{mode:'no-cors',cache:'no-store'}).catch(function(){})}catch(e){}};
   if(document.readyState==='complete')setTimeout(ENDPOINT_WARM,800);else addEventListener('load',function(){setTimeout(ENDPOINT_WARM,800)});
+  function preloadCg(){['tak-eugene','tak-daniil','nie-eugene','nie-daniil'].forEach(function(n){var i=new Image();i.decoding='async';i.src='chars/'+n+'.webp'})}
+  if(document.readyState==='complete')setTimeout(preloadCg,2000);else addEventListener('load',function(){setTimeout(preloadCg,2000)});
   var warmed=false;document.addEventListener('focusin',function(){if(!warmed){warmed=true;ENDPOINT_WARM()}});
 
   // form
-  var f=$('f'),err=$('err'),btn=$('send'),bt=btn.querySelector('.t'),wait=$('wait'),fb=$('formbox'),thx=$('thanks');
+  var f=$('f'),err=$('err'),btn=$('send'),bt=btn.querySelector('.t'),wait=$('wait'),fb=$('formbox'),thx=$('thanks'),vsEl=document.querySelector('.vs'),outEl=document.querySelector('.outro');
   var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var busy=false,pending=null,waitT=null;
   function coming(){var c=f.querySelector('input[name=coming]:checked');return c?c.value:null}
@@ -189,17 +204,21 @@ input:focus{outline:none;border-color:var(--acc)}
     err.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'});}
   function success(r){clearTimeout(waitT);wait.classList.remove('on');btn.classList.remove('is-loading');btn.classList.add('is-done');bt.textContent='Wysłano';
     var y=r.coming==='yes';
-    thx.innerHTML='<div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>'+
-      (y?'<h3>Dziękujemy!</h3><p>Do zobaczenia 17 października o 12:20.</p>':'<h3>Szkoda!</h3><p>Dziękujemy za odpowiedź.</p>')+
-      '<button class="again" type="button" id="again">Zmień odpowiedź</button>';
+    thx.className='thanks '+(y?'yes':'no');
+    thx.innerHTML=(y
+      ?'<div class="cg-stage" aria-hidden="true"><img src="chars/tak-eugene.webp" width="366" height="760" style="height:350px" alt=""><img src="chars/tak-daniil.webp" width="222" height="599" style="height:292px" alt=""></div>'
+       +'<div class="cg-t"><h3>Jesteś na liście!</h3><p>Do zobaczenia 17 października o 12:20.</p>'
+      :'<div class="cg-stage" aria-hidden="true"><img class="kneel" src="chars/nie-eugene.webp" width="238" height="533" style="height:232px" alt=""><img src="chars/nie-daniil.webp" width="213" height="646" style="height:280px" alt=""></div>'
+       +'<div class="cg-t"><h3>Szkoda!</h3><p>Dziękujemy za odpowiedź.</p>')
+      +'<button class="again" type="button" id="again">Zmień odpowiedź</button></div>';
     setTimeout(function(){
-      fb.style.height=fb.scrollHeight+'px';void fb.offsetHeight;fb.classList.add('collapsing');fb.style.height='0px';
-      setTimeout(function(){fb.hidden=true;fb.classList.remove('collapsing');fb.style.height='';
+      fb.style.height=fb.scrollHeight+'px';void fb.offsetHeight;fb.classList.add('collapsing');if(vsEl)vsEl.classList.add('fading');fb.style.height='0px';
+      setTimeout(function(){fb.hidden=true;fb.classList.remove('collapsing');fb.style.height='';if(vsEl)vsEl.hidden=true;if(outEl)outEl.hidden=true;
         thx.hidden=false;thx.classList.remove('in');void thx.offsetWidth;thx.classList.add('in');
-        thx.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'});
+        var y=thx.getBoundingClientRect().top+(window.scrollY||pageYOffset)-14;try{window.scrollTo({top:y,behavior:RM?'auto':'smooth'})}catch(e){window.scrollTo(0,y)}
         $('again').onclick=reopen;},RM?0:460);
     },RM?150:900);}
-  function reopen(){thx.hidden=true;fb.hidden=false;btn.classList.remove('is-done');setLoading(false);pending=null;f.elements.name.focus();}
+  function reopen(){thx.hidden=true;fb.hidden=false;if(vsEl){vsEl.hidden=false;vsEl.classList.remove('fading')}if(outEl)outEl.hidden=false;btn.classList.remove('is-done');setLoading(false);pending=null;f.elements.name.focus();}
   // one request per attempt; a slow or unreadable attempt is retried once silently with the same id (the script dedupes by id)
   function post(job,ms,cb){var done=false,ctl=window.AbortController?new AbortController():null;
     var to=setTimeout(function(){fin('timeout');if(ctl)ctl.abort()},ms);
