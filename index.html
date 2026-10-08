@@ -47,20 +47,19 @@ input:focus{outline:none;border-color:var(--acc)}
 .seg label{margin:0;text-align:center;padding:13px 10px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);font-size:16px;cursor:pointer}
 .seg input:checked+label{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
 .seg input:focus-visible+label{outline:2px solid var(--acc);outline-offset:2px}
-.num{display:grid;grid-template-columns:52px 1fr 52px;gap:8px}
-.num button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;font:600 20px/1 inherit;cursor:pointer}
-.num input{text-align:center}
-input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 [hidden]{display:none!important}
 .fig{display:block;width:auto;max-width:none;user-select:none;-webkit-user-select:none;pointer-events:none}
 .hd{position:relative;min-height:150px;padding-right:118px;display:flex;flex-direction:column;justify-content:flex-end;margin:0 0 14px}
 .hd .txt{padding-bottom:6px}
 .hd .fig{position:absolute;right:-16px;bottom:-14px;-webkit-mask-image:linear-gradient(to top,transparent,#000 18%);mask-image:linear-gradient(to top,transparent,#000 18%)}
-.peek{display:flex;align-items:center;gap:12px;margin:22px 0 -6px -16px}
-.peek .fig{-webkit-mask-image:linear-gradient(to right,transparent,#000 10%);mask-image:linear-gradient(to right,transparent,#000 10%)}
-.peek p{margin:0;font-size:22px;font-weight:700;letter-spacing:-.015em;line-height:1.15}
-.peek p span{display:block;color:var(--mute);font-size:15px;font-weight:500;letter-spacing:0;margin-top:6px}
+.vs{display:flex;justify-content:center;align-items:flex-end;gap:4px;margin:26px 0 0;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.vs figure{margin:0;display:flex;flex-direction:column;align-items:center}
+.vs figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600;margin:6px 0 8px}
+.vs .x{align-self:center;color:var(--acc);font-weight:700;font-size:15px;letter-spacing:.08em;margin:0 10px 30px}
+.vs .e .fig{-webkit-mask-image:linear-gradient(to left,transparent,#000 16%);mask-image:linear-gradient(to left,transparent,#000 16%)}
+.vs .d .fig{-webkit-mask-image:linear-gradient(to left,transparent,#000 14%),linear-gradient(to right,transparent,#000 8%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to left,transparent,#000 14%),linear-gradient(to right,transparent,#000 8%);mask-composite:intersect}
+.rsvp-h{margin:22px 0 2px;font-size:18px;font-weight:600;letter-spacing:-.005em}
 .outro{display:flex;justify-content:flex-end;align-items:flex-end;gap:18px;margin:8px -16px 0 0;border-bottom:1px solid var(--line)}
 .outro .fig{margin-bottom:-2px}
 .outro .fig:last-child{-webkit-mask-image:linear-gradient(to left,transparent,#000 10%);mask-image:linear-gradient(to left,transparent,#000 10%)}
@@ -127,28 +126,22 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     </a>
   </section>
 
-  <div class="peek">
-    <img class="fig" src="chars/daniil-point.webp" width="147" height="400" style="height:150px" alt="" decoding="async" loading="lazy">
-    <p>Potwierdź<br>obecność.</p>
+  <div class="vs" aria-hidden="true">
+    <figure class="e"><img class="fig" src="chars/eugene-thumbs.webp" width="169" height="340" style="height:128px" alt="" decoding="async" loading="lazy"><figcaption>Legenda</figcaption></figure>
+    <span class="x">vs</span>
+    <figure class="d"><img class="fig" src="chars/daniil-thumbs.webp" width="157" height="340" style="height:128px" alt="" decoding="async" loading="lazy"><figcaption>Następca</figcaption></figure>
   </div>
 
   <section id="rsvp">
     <div id="formbox">
     <form id="f" novalidate>
+      <h2 class="rsvp-h">Potwierdź obecność</h2>
       <label for="name">Imię i nazwisko</label>
       <input type="text" id="name" name="name" maxlength="80" autocomplete="name" required>
       <span class="lbl" id="comingLbl">Będziesz?</span>
       <div class="seg" role="radiogroup" aria-labelledby="comingLbl">
         <input type="radio" name="coming" id="c-yes" value="yes"><label for="c-yes">Tak</label>
         <input type="radio" name="coming" id="c-no" value="no"><label for="c-no">Nie</label>
-      </div>
-      <div id="peopleBox" hidden>
-        <label for="people">Liczba osób</label>
-        <div class="num">
-          <button type="button" id="minus" aria-label="Mniej">−</button>
-          <input type="number" id="people" name="people" min="1" max="20" step="1" value="1" inputmode="numeric">
-          <button type="button" id="plus" aria-label="Więcej">+</button>
-        </div>
       </div>
       <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
       <button class="submit" id="send" type="submit"><span class="spin" aria-hidden="true"></span><span class="t">Wyślij</span><svg class="chk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
@@ -181,14 +174,11 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   var warmed=false;document.addEventListener('focusin',function(){if(!warmed){warmed=true;ENDPOINT_WARM()}});
 
   // form
-  var f=$('f'),err=$('err'),btn=$('send'),bt=btn.querySelector('.t'),wait=$('wait'),ppl=$('people'),box=$('peopleBox'),fb=$('formbox'),thx=$('thanks');
+  var f=$('f'),err=$('err'),btn=$('send'),bt=btn.querySelector('.t'),wait=$('wait'),fb=$('formbox'),thx=$('thanks');
   var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var busy=false,pending=null,waitT=null;
   function coming(){var c=f.querySelector('input[name=coming]:checked');return c?c.value:null}
-  function clamp(n){n=parseInt(n,10);if(!isFinite(n))return 1;return Math.max(1,Math.min(20,n))}
-  f.addEventListener('change',function(){box.hidden=coming()!=='yes';err.textContent=''});
-  $('minus').onclick=function(){ppl.value=Math.max(1,clamp(ppl.value)-1)};
-  $('plus').onclick=function(){ppl.value=Math.min(20,clamp(ppl.value)+1)};
+  f.addEventListener('change',function(){err.textContent=''});
   function rid(){var a=new Uint8Array(10);crypto.getRandomValues(a);return 'rsvp'+Array.prototype.map.call(a,function(x){return x.toString(36)}).join('').slice(0,16)}
   function shake(el){if(RM)return;el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake')}
   function invalid(msg,el){err.textContent=msg;shake(el);if(el.focus&&el.tagName==='INPUT')el.focus();}
@@ -224,7 +214,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     var name=f.elements.name.value.trim(),c=coming();
     if(!name){invalid('Wpisz imię i nazwisko.',f.elements.name);return}
     if(!c){invalid('Zaznacz „Tak” albo „Nie”.',f.querySelector('.seg'));return}
-    var yes=c==='yes',people=yes?clamp(ppl.value):0;
+    var yes=c==='yes',people=yes?1:0;
     if(f.elements.website.value){success({name:name,coming:c});return}
     var p={k:SITE_KEY,v:1,id:rid(),ts:new Date().toISOString(),slug:'urodziny-daniil-13',subject:'Urodziny RSVP',topic:name.slice(0,80),mode:'other',
       variant:yes?'TAK':'NIE',score:people,extra:{kind:'rsvp',child:'RSVP',coming:yes?'TAK':'NIE',people:people,lang:'pl'},
